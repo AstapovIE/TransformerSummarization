@@ -1,0 +1,34 @@
+stages:
+  prepare_data:
+    cmd: python download_data.py
+    deps:
+      - download_data.py
+    outs:
+      - ../data/news.csv:
+          cache: false  # DVC не будет трогать папку
+
+  train:
+    cmd: cd .. && python -m dvc_pipeline.train
+    deps:
+      - ../data/news.csv
+      - ../model/Transformer.py
+      - ../Training.py
+      - train.py
+      - config.json
+    outs:
+      - ../trained_model.pth:
+          cache: false
+
+
+  compute_metrics:
+    cmd: cd .. && python -m dvc_pipeline.compute_metrics
+    deps:
+      - ../data/news.csv
+      - ../trained_model.pth
+      - compute_metrics.py
+    outs:
+      - ../data/demo_result.txt:
+          cache: false
+      - ../data/attention_0.png:
+          cache: false
+

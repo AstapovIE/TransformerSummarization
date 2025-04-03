@@ -1,0 +1,11 @@
+{
+    "d_model": 256,
+    "device": "cuda",
+    "blocks_count": 4,
+    "dropout_rate": 0.1,
+    "embed": "None",
+    "epochs": 1,
+    "use_wandb": false,
+    "name": "Test1",
+    "model_path": "none_29.pth"
+}

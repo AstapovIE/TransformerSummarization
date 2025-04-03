@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: summary-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: summary
+  template:
+    metadata:
+      labels:
+        app: summary
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - name: summary-prediction
+        image: ilyaastapov/summary-prediction:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: FLASK_ENV
+          value: "production"
+
+
+
+#          kubectl create secret docker-registry regcred \
+#          --docker-server=https://index.docker.io/v1/ \
+#          --docker-username=ваш_логин \
+#          --docker-password=ваш_пароль \
+#          --docker-email=ваш_email

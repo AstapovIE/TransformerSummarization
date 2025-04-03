@@ -1,0 +1,11 @@
+{
+    "d_model": 768,
+    "device": "cuda",
+    "blocks_count": 4,
+    "dropout_rate": 0.1,
+    "embed": "bert",
+    "epochs": 60,
+    "use_wandb": true,
+    "name": "Test60b_final",
+    "model_path": "bert_60.pth"
+}

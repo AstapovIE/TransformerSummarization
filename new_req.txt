@@ -1,0 +1,8 @@
+torch
+pandas
+flask
+torchtext==0.6.0
+sacremoses==0.0.5
+tqdm
+wget
+fasttext
